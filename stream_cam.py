@@ -9,8 +9,9 @@ if __name__ == "__main__":
 
     while True:
         im = cv.QueryFrame(cv_cap)
+        cv.Laplace(im,im,5)
         cv.ShowImage("stream_win", im)
-        if (cv.WaitKey(20) == 27):
+        if (cv.WaitKey(1) == 27):
             break
 
     cv.DestroyAllWindows()
