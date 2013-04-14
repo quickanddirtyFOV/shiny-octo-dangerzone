@@ -12,6 +12,7 @@ if __name__ == "__main__":
         cv.Laplace(im,im,5)
         cv.ShowImage("stream_win", im)
         if (cv.WaitKey(1) == 27):
+            cv.ReleaseCapture(cv_cap)
             break
 
     cv.DestroyAllWindows()
