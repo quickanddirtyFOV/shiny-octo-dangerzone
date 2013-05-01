@@ -59,6 +59,13 @@ it from apt-get.
 Once done iterating this, just click configure and exit cmake-gui. Now you can make and install according to the standard
 instruction.
 
+Once done installing. Add this to the rc-file of your favorite shell:
+
+export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+
+As all of the OpenCV libraries are installed into /usr/local/lib. If you decided to use another
+install prefix change the link accordingly. 
+
 General configuration for OpenCV 2.4.5 =====================================
   Version control:               unknown
 
