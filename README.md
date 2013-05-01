@@ -44,7 +44,8 @@ $ cmake-gui <opencv_dir>
 This will give you a view of what will be built (BUILD_*), some information about where in the system the various packages
 where found and also which libraries to use when building (WITH_*). I checked all of the WITH_ except OpenNI and OpenCL
 (got some build problem with openCL, if you fix this plz let me know).
-I recommend not check any box for building external packages e.g jasper.
+I recommend not check any box for building external packages from src e.g BUILD_JASPER, since this will probably screw
+up your system.
 
 Also check the ENABLE_* flags. ENABLE_FAST_MATH is nice to have for example.
 
