@@ -6,6 +6,11 @@ import numpy as np
 import screengrab
 import cv2.cv as cv
 
+from IPython import embed
+import pylab as pl
+
+do_embed = True
+
 
 def main_loop(cv_cap):
     cv2.namedWindow("dbg")
@@ -44,6 +49,8 @@ def main_loop(cv_cap):
         k = cv2.waitKey(10)
 
         if (k == 27):
+	    if do_embed:
+		embed()
             break
         elif (k == ord('c')):
             print "Toggling calibration"
