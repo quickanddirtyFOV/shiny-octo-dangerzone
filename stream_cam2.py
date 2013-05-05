@@ -9,10 +9,10 @@ import cv2.cv as cv
 from IPython import embed
 import pylab as pl
 
-do_embed = True
+from optparse import OptionParser
 
 
-def main_loop(cv_cap):
+def main_loop(cv_cap, do_embed):
     cv2.namedWindow("dbg")
     cv2.namedWindow("desktop")
     cv2.namedWindow("cam")
@@ -49,8 +49,8 @@ def main_loop(cv_cap):
         k = cv2.waitKey(10)
 
         if (k == 27):
-	    if do_embed:
-		embed()
+            if do_embed:
+                embed()
             break
         elif (k == ord('c')):
             print "Toggling calibration"
@@ -62,7 +62,17 @@ def cleanup(cv_cap):
     cv2.destroyAllWindows()
 
 if __name__ == "__main__":
-    cv_cap = cv2.VideoCapture()
+    parser = OptionParser()
+
+    parser.add_option("-e", "--embed", dest="embed",
+        help="Go to embedded IPython on exit", action="store_true",
+        default=False)
+    parser.add_option("-i", "--camid", dest="camid", default=0)
+
+    options, args = parser.parse_args()
+
+    camid = np.int(options.camid)
+    cv_cap = cv2.VideoCapture(camid)
 
     cv_cap.open(-1)
 
@@ -70,7 +80,7 @@ if __name__ == "__main__":
         cleanup(cv_cap)
 
     try:
-        main_loop(cv_cap)
+        main_loop(cv_cap, options.embed)
     except Exception, e:
         print e
         raise e

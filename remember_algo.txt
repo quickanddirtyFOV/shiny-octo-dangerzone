@@ -1,0 +1,6 @@
+1. convert to gray with cv2.cvtColor
+2. use opencv harris filter with settings 3,3,0.04
+3. view hist with np.histogram and set threshold, used 0.002
+4. Use scipy.ndimage.measure.label to label the clusters. This returns
+an image with each pixel having a value corresponding to the cluster and
+also the number of clusters found.
